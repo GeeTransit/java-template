@@ -51,7 +51,7 @@ if not defined NAME (set NAME=%AREA%)
 set BATFILE=%PACKAGE%\%NAME%.bat
 set JARFILE=%PACKAGE%\%NAME%.jar
 set MANIFEST=%TEMPORARY%\manifest.txt
-for %%A in (%ACTION%) do (call :%%A || (echo error:%%A:!ERRORLEVEL! & exit /b !ERRORLEVEL!))
+for %%A in (%ACTION%) do (call :%%A || (echo error:action:%%A:!ERRORLEVEL! & exit /b !ERRORLEVEL!))
 goto :EOF
 
 :create

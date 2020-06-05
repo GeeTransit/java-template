@@ -42,7 +42,7 @@ for /f "usebackq tokens=*" %%N in (`call "%~dp0empty" %REQKEYS%`) do (echo missi
 :action
 if defined PRINT%~n0ERROR (set "CHECK=") else (set "CHECK=2>nul")
 set SOURCESLIST=%TEMPORARY%\sources.txt
-for %%A in (%ACTION%) do (call :%%A || (echo error:%%A:!ERRORLEVEL! & exit /b !ERRORLEVEL!))
+for %%A in (%ACTION%) do (call :%%A || (echo error:action:%%A:!ERRORLEVEL! & exit /b !ERRORLEVEL!))
 goto :EOF
 
 :create

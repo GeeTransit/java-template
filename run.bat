@@ -12,7 +12,7 @@ set ARGS=-i %INIFILE% -a %AREA%
 
 @rem set error level https://superuser.com/a/649329
 echo creating
-call %SCRIPTS%\compile %ARGS% -c & set LAST=!ERRORLEVEL!
+call %SCRIPTS%\compile %ARGS% -r -c & set LAST=!ERRORLEVEL!
 echo create:%LAST%
 if not %LAST% == 0 (pause & exit /b %LAST%)
 
