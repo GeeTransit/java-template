@@ -61,7 +61,10 @@ goto :EOF
 >>%MANIFEST% echo Main-Class: %MAIN%
 @rem package the class files
 %ERROR% mkdir %PACKAGE%
-%OUTPUT% jar cvfm %JARFILE% %MANIFEST% %LIBRARY% %RESOURCE% -C %COMPILE% . || exit /b !ERRORLEVEL!
+set ARGS=
+if exist %LIBRARY% (set ARGS=%ARGS%%LIBRARY% )
+if exist %RESOURCE% (set ARGS=%ARGS%%RESOURCE% )
+%OUTPUT% jar cvfm %JARFILE% %MANIFEST% %ARGS% -C %COMPILE% . || exit /b !ERRORLEVEL!
 @rem create batch running file
 >%BATFILE% <nul (set /p "_=")
 >>%BATFILE% echo java -jar %NAME%.jar
